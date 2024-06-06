@@ -1,0 +1,191 @@
+--Yuup Client v1.0.0 - Status: Work
+
+_G.Main = {}
+
+function _G.Main:CreateNewWindow(title)
+	local Yuup = Instance.new("ScreenGui")
+	local TitleBar = Instance.new("Frame")
+	local Title = Instance.new("TextLabel")
+	local Navegation = Instance.new("Frame")
+	local Controls = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	
+	UIListLayout.Parent = Controls
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0, 7)
+	
+	Yuup.Name = "Yuup"
+	Yuup.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Yuup.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	TitleBar.Name = "TitleBar"
+	TitleBar.Parent = Yuup
+	TitleBar.BackgroundColor3 = Color3.fromRGB(255, 238, 0)
+	TitleBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TitleBar.BorderSizePixel = 0
+	TitleBar.Position = UDim2.new(0.130882353, 0, 0.33670035, 0)
+	TitleBar.Size = UDim2.new(0, 150, 0, 25)
+
+	Title.Name = "Title"
+	Title.Parent = TitleBar
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Title.BorderSizePixel = 0
+	Title.Size = UDim2.new(0, 141, 0, 25)
+	Title.Font = Enum.Font.FredokaOne
+	Title.Text = tostring(title)
+	Title.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Title.TextSize = 16.000
+	TitleBar.Active = true
+	TitleBar.Draggable = true
+
+	Navegation.Name = "Navegation"
+	Navegation.Parent = TitleBar
+	Navegation.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
+	Navegation.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Navegation.BorderSizePixel = 0
+	Navegation.Position = UDim2.new(0, 0, 0.960000634, 0)
+	Navegation.Size = UDim2.new(0, 150, 0, 182)
+	
+	Controls.Name = "Controls"
+	Controls.Parent = Navegation
+	Controls.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Controls.BackgroundTransparency = 1.000
+	Controls.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Controls.BorderSizePixel = 0
+	Controls.Position = UDim2.new(0, 0, 0.0219780225, 0)
+	Controls.Size = UDim2.new(0, 150, 0, 178)
+	
+end
+
+function _G.Main:NewButton(text, callback)
+	local Button = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+
+	Button.Name = "Button"
+	Button.Parent = game.Players.LocalPlayer.PlayerGui.Yuup.TitleBar.Navegation.Controls
+	Button.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
+	Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Button.BorderSizePixel = 0
+	Button.Position = UDim2.new(0.0466666669, 0, 0.0384615399, 0)
+	Button.Size = UDim2.new(0, 135, 0, 23)
+	Button.Font = Enum.Font.FredokaOne
+	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Button.TextSize = 16.000
+	Button.Text = text
+
+	UICorner.CornerRadius = UDim.new(0, 4)
+	UICorner.Parent = Button
+
+	Button.MouseEnter:Connect(function()
+		Button.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
+	end)
+
+	Button.MouseLeave:Connect(function()
+		Button.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
+	end)
+
+	Button.MouseButton1Click:Connect(function()
+		pcall(callback)
+	end)
+end
+
+function _G.Main:NewToggle(text, callback, callbackend)
+	local Toggle = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local TitleToggle = Instance.new("TextLabel")
+	local ToggleButton = Instance.new("ImageButton")
+	local UIStroke = Instance.new('UIStroke')
+	local UICorner = Instance.new("UICorner")
+	local UICorne1r = Instance.new("UICorner")
+
+	UICorner.Parent = Toggle
+
+	TitleToggle.Name = "TitleToggle"
+	TitleToggle.Parent = Toggle
+	TitleToggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TitleToggle.BackgroundTransparency = 1.000
+	TitleToggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TitleToggle.BorderSizePixel = 0
+	TitleToggle.Size = UDim2.new(0, 96, 0, 24)
+	TitleToggle.Font = Enum.Font.FredokaOne
+	TitleToggle.Text = text
+	TitleToggle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TitleToggle.TextSize = 16.000
+	TitleToggle.TextWrapped = true
+	TitleToggle.Position = UDim2.new(0, 0, 0)
+	
+	Toggle.Name = "Toggle"
+	Toggle.Parent = game.Players.LocalPlayer.PlayerGui.Yuup.TitleBar.Navegation.Controls
+	Toggle.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
+	Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Toggle.BorderSizePixel = 0
+	Toggle.Position = UDim2.new(0.0533333346, 0, 0.230769232, 0)
+	Toggle.Size = UDim2.new(0, 134, 0, 24)
+
+	ToggleButton.Name = "ToggleButton"
+	ToggleButton.Parent = Toggle
+	ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
+	ToggleButton.BackgroundTransparency = 1.000
+	ToggleButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ToggleButton.BorderSizePixel = 0
+	ToggleButton.Position = UDim2.new(0.828000009, 0, 0.125, 0)
+	ToggleButton.Size = UDim2.new(0, 17, 0, 18)
+	ToggleButton.Image = "rbxassetid://2790552399"
+	ToggleButton.ImageTransparency = 1.000
+
+	local isActive = false
+	local activeThread
+	
+	UIStroke.Enabled = true
+	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	UIStroke.Transparency = 0
+	UIStroke.Thickness = 0.9
+	UIStroke.Parent = ToggleButton
+	
+	UICorne1r.CornerRadius = UDim.new(0, 4)
+	UICorne1r.Parent = ToggleButton
+
+	UICorner.CornerRadius = UDim.new(0, 4)
+	UICorner.Parent = Toggle
+	
+	ToggleButton.MouseButton1Click:Connect(function()
+		isActive = not isActive
+		if isActive then
+			local TweenService = game:GetService('TweenService')
+			local TweenColor = TweenService:Create(ToggleButton, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(0, 153, 255)})
+			local TweenImage1 = TweenService:Create(ToggleButton, TweenInfo.new(0.1), {ImageTransparency = 0})
+			local TweenBack2 = TweenService:Create(ToggleButton, TweenInfo.new(0.1), {BackgroundTransparency = 0})
+			
+			TweenColor:Play()
+			TweenImage1:Play()
+			TweenBack2:Play()
+			print("["..os.date().."] - Yuup Client Toggle Function Fired At Server "..game.JobId)
+			
+			activeThread = coroutine.create(function()
+				while isActive do
+					local success, result = pcall(callback)
+					if not success then
+						warn('ERROR: ' .. result)
+					end
+					wait(0.1)
+				end
+			end)
+			coroutine.resume(activeThread)
+		else
+			if activeThread then
+				local TweenService = game:GetService('TweenService')
+				local TweenColor = TweenService:Create(ToggleButton, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(89, 89, 89)})
+				local TweenImage1 = TweenService:Create(ToggleButton, TweenInfo.new(0.1), {ImageTransparency = 1})
+				local TweenBack2 = TweenService:Create(ToggleButton, TweenInfo.new(0.1), {BackgroundTransparency = 1})
+				
+				TweenBack2:Play()
+				TweenColor:Play()
+				TweenImage1:Play()
+				pcall(callbackend)
+			end
+		end
+	end)
+end
