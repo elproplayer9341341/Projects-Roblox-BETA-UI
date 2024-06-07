@@ -16,7 +16,7 @@ function _G.Main:CreateNewWindow(title)
 	UIListLayout.Padding = UDim.new(0, 7)
 	
 	Yuup.Name = "Yuup"
-	Yuup.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Yuup.Parent = game.CoreGui
 	Yuup.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	TitleBar.Name = "TitleBar"
@@ -65,7 +65,7 @@ function _G.Main:NewButton(text, callback)
 	local UICorner = Instance.new("UICorner")
 
 	Button.Name = "Button"
-	Button.Parent = game.Players.LocalPlayer.PlayerGui.Yuup.TitleBar.Navegation.Controls
+	Button.Parent = game.CoreGui.Yuup.TitleBar.Navegation.Controls
 	Button.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
 	Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Button.BorderSizePixel = 0
@@ -118,7 +118,7 @@ function _G.Main:NewToggle(text, callback, callbackend)
 	TitleToggle.Position = UDim2.new(0, 0, 0)
 	
 	Toggle.Name = "Toggle"
-	Toggle.Parent = game.Players.LocalPlayer.PlayerGui.Yuup.TitleBar.Navegation.Controls
+	Toggle.Parent = game.CoreGui.Yuup.TitleBar.Navegation.Controls
 	Toggle.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
 	Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Toggle.BorderSizePixel = 0
